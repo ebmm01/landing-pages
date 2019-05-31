@@ -71,19 +71,19 @@ $(document).ready(function(){
     window.onscroll = function(ev) {
         if ($(this).scrollTop() >= 110) {
             $('#return-to-top').fadeIn(200); 
-            $(".navbar-fixed nav").addClass('blue');
+            $(".navbar-fixed nav").addClass('green');
             $('#back-to-top').css('opacity', '1').removeClass('scale-out');
         } else {
             $('#return-to-top').fadeOut(200);
-            $(".navbar-fixed nav").removeClass('blue');
+            $(".navbar-fixed nav").removeClass('green');
             $('#back-to-top').addClass('scale-out');
         }
     };
     if ($(window).scrollTop() >= 110) { 
-        $(".navbar-fixed nav").addClass('blue');
+        $(".navbar-fixed nav").addClass('green');
         $('#back-to-top').css('opacity', '1');
     } else {
-        $(".navbar-fixed nav").removeClass('blue');
+        $(".navbar-fixed nav").removeClass('green');
     }
 
     $("#back-to-top").click(function(event) {
@@ -101,6 +101,15 @@ $(document).ready(function(){
     $('.sidenav').sidenav();
     $('.parallax').parallax();
     $('.scrollspy').scrollSpy();
+    var elem = document.querySelectorAll('.zoomed');
+    var instance = M.Materialbox.init(elem, {
+        onOpenStart: function () {
+            $('.navbar-fixed').css('z-index', 0);
+        },
+        onCloseStart: function () {
+            $('.navbar-fixed').css('z-index', 997);
+        },
+    });
     AOS.init({
         anchorPlacement: 'top-bottom',
     });
