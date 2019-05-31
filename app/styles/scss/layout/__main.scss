@@ -1,0 +1,485 @@
+html {
+    height: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+
+body {
+
+    font: 400 100% "Roboto", Arial, sans-serif;
+    color: $c-gray80;
+
+    h2,h5, {
+        color:  $c-white;
+    }
+
+    a {
+        color: $c-blue_dark;
+
+        &:hover,&:active,&:focus {
+            color: $c-blue_light;
+        }
+    }
+
+    > header {
+
+        height: 0;
+
+        nav {
+            &.blue {
+                box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+                background-color: $c-blue_light;
+            }
+
+            box-shadow: none;
+            background-color: transparent;
+            padding: 0 80px;
+            transition: all 0.3s;
+
+            .nav-wrapper {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                
+                .brand-logo {
+                    display: flex;
+                    align-items: center;
+                    height: 100%;
+                    left: unset;
+                    transform: none;
+
+                    img {
+                        transition: all 0.3s ease-out;
+                        max-width: 270px;
+                        object-fit: contain;
+                    }
+                    
+                }
+
+                ul, .sidenav-trigger {
+                    margin-left: auto;
+                }
+            }
+
+            ul {
+                li {
+                    a {                       
+                        &:hover, &:active, &:focus {
+                            color: $c-white;
+                        }
+                        &.active {
+                            background-color: rgba(0,0,0,0.1);
+                        }
+                    }
+                }
+            }
+
+            @media (max-width: 470px) {
+                padding: 0 30px;
+            }
+        }
+    }
+
+    main {
+
+        .wrapper {
+            section {
+                margin:  0;
+                position: relative;
+    
+                &#banner {
+                    min-height: 50vh;
+                    padding: 0 80px;
+                    padding-top: 80px;
+                    width: 100%;
+                    display: flex;
+                    align-items: flex-start;
+                    flex-direction: column;
+                    justify-content: center;
+
+                    h3,h6 {
+                        font-weight: 400;
+                        color: $c-white;
+                    }   
+
+                    h3,h6 {
+                        margin-bottom: 5px;
+                        margin-top: 5px;
+                    }    
+                    h6 {
+                        font-size: 1.3em;
+                        line-height: 1.4em;
+                        font-weight: 300;
+                    }
+    
+                    @media (max-width:450px) {
+    
+                        article {
+                            padding: 40px 50px;
+                            justify-content: space-between;
+                        }
+                    }
+
+                    .row {
+                        margin-top: -80px;
+                    }
+
+                    .parallax {
+                        img {
+                            filter: brightness(0.5);
+                        }
+                    }
+    
+                }
+    
+                &.main-section {
+                    margin: -60px 30px 0;
+                    border-radius: 6px;
+                    box-shadow: 0 24px 38px 3px rgba(0,0,0,0.14), 0 9px 46px 8px rgba(0,0,0,0.12), 0 11px 15px -7px rgba(0,0,0,0.2);
+
+                    .row-title, .row-description {
+                        text-align: center;
+                    }
+                    .row-description {
+                        margin-bottom: 50px;
+                    }
+    
+                    .clients {
+                        background: $c-white;
+                        border-radius: 6px;
+                        
+                        margin-top: -50px;
+                        padding: 1px 80px 30px ;
+
+                        .flex-container {
+                            display: flex;
+                            flex-wrap: wrap;
+
+                            .col {
+                                display: flex;
+                                justify-content: stretch;
+
+                                $color-collection: (
+                                    $c-green,$c-purple,$c-orange,$c-orange_dark,$c-orange_light,$c-dark_blue    
+                                );
+
+                                @for $i from 0 to length($color-collection) {
+                                    &:nth-child(#{$i + 1}) {
+                                        .card {
+                                            border-bottom:5px solid nth($color-collection, $i+1);
+                                            .card-reveal {
+                                                a {
+                                                    background: nth($color-collection, $i+1);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                       .card {
+
+                            box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+                            margin: 20px 15px;
+                            transition: all 0.2s ease-out;
+
+                            .imgs {
+                               > img {
+                                    height: 280px;
+                                    object-fit: cover;
+                               }
+                            }   
+            
+                            &:hover {
+                                box-shadow: 0 24px 38px 3px rgba(0,0,0,0.14), 0 9px 46px 8px rgba(0,0,0,0.12), 0 11px 15px -7px rgba(0,0,0,0.2);
+                                transform: translateY(-5px);
+                            }
+                            .card-reveal {
+                                > .btn {
+                                    width: 90%;
+                                    position: absolute;
+                                    bottom: 15px;
+                                }
+                                p {
+                                    font-size: 16px;
+                                    text-indent: 30px;
+                                    @include multiLineEllipsis($lineHeight: 1.13em, $lineCount: 14, $bgColor: white);  
+                                }
+                            }
+                        } 
+                    }
+                    #institucional {
+                        .parallax-container {
+                            min-height: 500px;
+                            height: auto;
+                            .parallax {
+                                filter: brightness(0.5);
+                            }
+                        }
+                        .content {
+                            padding: 30px 80px 30px;
+
+                            .row {
+                                &.centered {
+                                    display: flex;
+                                    align-items: center;
+                                }
+                                .col {
+                                    img {
+                                        width: 65%;
+                                    }
+                                }
+                            }
+
+                            .content-text {
+                                margin-bottom: 20px;
+                                padding: 0 40px;
+                                h5 {
+                                    margin-top: 0;
+                                    text-transform: uppercase;
+                                    text-align: center;
+                                }
+
+                                > p {
+                                    font-weight: 400;
+                                    margin: 0;
+                                    font-size: 16px;
+                                    line-height: 25px;
+                                    text-align: justify;
+                                    text-indent: 60px;
+                                }
+
+                                ul {
+                                    li {
+                                        list-style-type: disc;
+                                        margin-bottom: 15px;
+                                    }
+                                    
+                                }
+
+                                &.description {
+                                    p {
+                                        font-style: italic;
+                                        font-size: 20px;
+                                        margin-bottom: 10px;
+                                    }
+                                    .subtext {
+                                        display: block;
+                                        text-align: right;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    #clientes, #parceiros {
+                        padding: 30px 80px;
+                    }
+
+                    #fale-conosco {
+                        padding: 30px 80px;
+
+                        form {
+                            padding: 0 40px;
+
+                            textarea {
+                                height: unset !important;
+                            }
+                        }
+                        .contato {
+                            padding-left: 40px;
+
+                            iframe {
+                                width: 100%;
+                                height: 450px;
+                            }
+                            .box-endereco {
+                                span {
+                                    text-transform: uppercase;
+                                    color: $c-blue_footer;
+                                    font-weight: 500;
+                                }
+                            }
+                        }
+                    }
+                    
+                }
+
+                // Responsividade
+                @media (max-width: 1368px) {
+                    &.main-section {
+                        #produtos-servicos {
+                            .card {
+                                .card-image {
+                                    > img {
+                                        height: 250px;
+                                    }
+                                }
+                                .card-content {
+                                    min-height: 156px;
+                                    display: flex;
+                                    flex-direction: column;
+                                    justify-content: space-around;
+                                }
+                            }
+
+                        }
+                    }
+                }
+
+                @media (max-width: 992px) {
+                    &.main-section {
+
+                        #produtos-servicos {
+                            .card {
+                                .card-content {
+                                    min-height: unset;
+                                }
+                            }
+
+                        }
+
+                        #institucional {
+                            .parallax-container {
+                                .content {
+                                    .row {
+                                        .col {
+                                            &:first-child {
+                                                text-align: center;
+                                                margin-bottom: 50px;
+                                            }
+                                        }
+                                        
+                                    }
+                                }
+                            }
+                        }
+
+                        #clientes, #parceiros {
+                            .icons {
+                                .icon-item {
+                                    flex-basis: calc(50% - 50px);
+                                }
+                            }
+                        }
+
+                        #fale-conosco {
+                            .contato {
+                                padding-top: 50px;
+                            }
+                        }
+                    }
+                }
+
+                @media (max-width: 768px) {
+                    &.main-section {
+                        #produtos-servicos {
+                            margin-top: 0;
+                            padding: 1px 30px 30px;
+                        }
+                        #institucional {
+                            .content {
+                                padding: 30px;
+                                .content-text {
+                                    margin-bottom: 27px;
+                                    padding: 0 25px;
+                                }
+                            }
+                        }
+                        #clientes, #parceiros, #fale-conosco {
+                            padding: 30px;
+                        }
+                    }
+                }
+
+                @media (max-width: 682px) {
+                    &#banner {
+                        padding: 80px 50px 0px;
+                    }
+                }
+
+                @media (max-width: 550px) {
+                    &.main-section {
+                        #produtos-servicos {
+                            padding: 1px 20px 30px;
+                            .card {
+                                margin: 20px 0;
+                            }
+                        }
+                        #institucional {
+                            .content {
+                                padding: 20px;
+                            }
+                        }
+                        #clientes, #parceiros, #fale-conosco {
+                            padding: 20px;
+                        }
+                    }
+                }
+
+                @media (max-width: 460px) {
+                    &#banner {
+                        padding: 80px 25px 20px;
+                    }
+
+                    &.main-section {
+                        margin: -45px 15px 0;
+
+                        #produtos-servicos {
+                            padding: 1px 15px 30px;
+                        }
+                        #institucional {
+                            .content {
+                                padding: 15px;
+                            }
+                        }
+                        #clientes, #parceiros, #fale-conosco {
+                            padding: 15px;
+
+                            .icons {
+                                .icon-item {
+                                    flex-basis: 90%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    footer {
+        color: $c-gray80;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 85px;
+        height: 80px;
+
+        .footer-icons {
+            a {
+                background: $c-gray60;
+                color: $c-white;
+                width: 35px;
+                height: 35px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.2s ease-out;
+                border-radius: 5px;
+
+                &:hover {
+                    box-shadow: 0 24px 38px 3px rgba(0,0,0,0.14), 0 9px 46px 8px rgba(0,0,0,0.12), 0 11px 15px -7px rgba(0,0,0,0.2);
+                }
+            }
+        }
+    }
+}
